@@ -1,0 +1,59 @@
+<section class="upload">
+    <h1 class="tite">Testando...</h1>
+    <div class="row">
+
+        <div class="col-md-12">
+            <h3>Select files</h3>
+            <input class="form-control" type="file" #fileInput multiple (input)="addToQueue()" />
+        </div>
+
+        <div class="col-md-12 py-5">
+            <h3>Upload queue</h3>
+            <table class="table bg-light table-striped">
+                <thead>
+                    <tr>
+                        <th class="text-left">Name</th>
+                        <th class="text-right">Size</th>
+                        <th class="text-left">Progress</th>
+                        <th class="text-left">Status</th>
+                        <th class="text-right">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of queue | async, let i = index">
+                        <td>{{ item?.file?.name }}</td>
+                        <td class="text-right">{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                        <td>
+                            {{ item.progress == 0 && item.isClicked ? '': item.progress + ' %' }}
+                            <div *ngIf="item.progress == 0 && item.isClicked" class="lds-ellipsis">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </td>
+                        <td>
+                            <span *ngIf="item.isPending()" class="tag tag-default"></span>
+                            <span *ngIf="item.isSuccess()" class="tag tag-success"></span>
+                            <span *ngIf="item.inProgress()" class="tag tag-warning"></span>
+                            <span *ngIf="item.isError()" class="tag tag-danger"></span>
+                        </td>
+                        <td class="text-right">
+                            <a matTooltip="Upload do arquivo" (click)="item.upload()" *ngIf="item.isUploadable()">
+                                <mat-icon class="material-icons-outlined">upload</mat-icon>
+                            </a>
+                            <a matTooltip="Remover da fila" (click)="item.remove()" *ngIf="!item.inProgress()">
+                                <mat-icon class="material-icons-outlined">delete</mat-icon>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <a class="btn button me-2 btn-outline-warning" (click)="clearQueue()">Clear queue</a>
+                <a class="btn button btn-primary" (click)="uploader.uploadAll()">Upload all</a>
+            </div>
+        </div>
+
+    </div>
+</section>

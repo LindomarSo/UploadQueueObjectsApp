@@ -1,0 +1,8 @@
+<section class="home">
+    <h1 class="title py-3">Lista de imagens</h1>
+    <div class="row">
+        <div *ngFor="let item of items" class="col-md-3 py-2">
+            <img [src]="item" alt="image" class="fluid">
+        </div>
+    </div>
+</section>
