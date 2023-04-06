@@ -12,9 +12,9 @@ import {MatIconModule} from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NavHeaderComponent } from './core/components/nav-header/nav-header/nav-header.component';
-import { UploadFileComponent } from './core/pages/upload-file/upload-file.component';
-import { HomeComponent } from './core/pages/home/home.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { UploadFileComponent } from './feature/upload-file/upload-file.component';
+import { HomeComponent } from './feature/home/home.component';
 
 @NgModule({
   declarations: [

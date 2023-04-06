@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FileQueueObject } from 'src/app/shared/models/fileQueueObject';
-import { UploadServerService } from '../../services/uploader/upload-server.service';
+import { UploadServerService } from './service/upload-server.service';
 
 @Component({
   selector: 'app-upload-file',

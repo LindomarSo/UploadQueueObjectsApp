@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './core/pages/home/home.component';
-import { UploadFileComponent } from './core/pages/upload-file/upload-file.component';
+import { HomeComponent } from './feature/home/home.component';
+import { UploadFileComponent } from './feature/upload-file/upload-file.component';
 
 const routes: Routes = [
   {
