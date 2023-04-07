@@ -2,7 +2,7 @@ import { FileQueueStatus } from "./fileQueueStatus";
 
 export class FileQueueObject {
     public file: any;
-    public status: FileQueueStatus = FileQueueStatus.Pending;
+    public status!: FileQueueStatus;
     public progress: number = 0;
     public isClicked: boolean = false;
   
@@ -15,9 +15,8 @@ export class FileQueueObject {
     public remove = () => { /* set in service */ };
   
     // status
-    public isPending = () => this.status === FileQueueStatus.Pending;
     public isSuccess = () => this.status === FileQueueStatus.Success;
     public isError = () => this.status === FileQueueStatus.Error;
     public inProgress = () => this.status === FileQueueStatus.Progress;
-    public isUploadable = () => this.status === FileQueueStatus.Pending || this.status === FileQueueStatus.Error;  
+    public isUploadable = () =>  this.status === FileQueueStatus.Error;  
   }
